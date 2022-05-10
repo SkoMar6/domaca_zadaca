@@ -7,9 +7,10 @@ use postolar;
 create table obuca(
     sifra int not null primary key auto_increment,
     vrsta_obuce varchar(30),
-    velicina_obuce decimal(50),
+    velicina_obuce decimal(10,1),
     materijal varchar(30),
-    oznaka_obuce varchar(20) not null
+    oznaka_obuce varchar(20) not null,
+    korisnik int
 );
 
 create table korisnik(
@@ -25,7 +26,8 @@ create table popravak(
     oznaka_obuce varchar(20) not null,
     cijena varchar(50),
     vrijeme varchar(50),
-    rad_segrta varchar(50)
+    rad_segrta varchar(50),
+    segrt int
 );
 
 create table segrt (
@@ -35,3 +37,8 @@ create table segrt (
     broj_popravaka_dnevno varchar(50),
     oznaka_obuce varchar(20) not null
 );
+
+# definiranje vanjskih ključeva
+
+alter table popravak add foreign key (segrt) references segrt(sifra);
+alter table obuca add foreign key (korisnik) references korisnik(sifra);
