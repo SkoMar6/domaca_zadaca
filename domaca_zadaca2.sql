@@ -8,6 +8,7 @@ create table vozilo(
     marka_vozila varchar(30),
     serijski_broj varchar(50) not null,
     vozac int,
+    boja varchar(30) not null,
     broj_putnika int
 );
 
@@ -32,7 +33,7 @@ create table putnik(
     sifra int not null primary key auto_increment,
     adresa_prikupa varchar(50),
     adresa_Dostave varchar(50),
-    dob varchar(50),
+    dob int,
     vozilo int
 );
 
@@ -43,3 +44,16 @@ alter table voznja add foreign key (vozilo) references vozilo(sifra);
 alter table voznja add foreign key (vozac) references vozac(sifra);
 
 alter table putnik add foreign key (vozilo) references vozilo(sifra);
+
+# unos podataka
+
+insert into vozilo (boja, serijski_broj)
+values ('Zelena','qwertz');
+
+insert into vozac (serijski_broj)
+values ('xyz123');
+
+insert into putnik (dob)
+
+
+
