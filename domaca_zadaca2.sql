@@ -42,4 +42,4 @@ alter table vozac add foreign key (vozilo) references vozilo (sifra);
 alter table voznja add foreign key (vozilo) references vozilo(sifra);
 alter table voznja add foreign key (vozac) references vozac(sifra);
 
-alter table putnik add foreign key  (vozilo) references vozilo(sifra);
+alter table putnik add foreign key (vozilo) references vozilo(sifra);
