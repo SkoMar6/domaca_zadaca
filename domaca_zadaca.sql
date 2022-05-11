@@ -44,9 +44,12 @@ alter table popravak add foreign key (segrt) references segrt(sifra);
 alter table obuca add foreign key (korisnik) references korisnik(sifra);
 
 # unos podataka
-insert into obuca (oznaka_obuce)
-values ('M7652C');
+insert into obuca (oznaka_obuce, vrsta_obuce, materijal)
+values ('M7652C', 'Čizme', 'Gumene');
 
-insert into 
+insert into korisnik (ime_prezime, oznaka_obuce, komada_obuce)
+values ('Tomislav Jakopec', 'M7650C', 2);
+
+
 
 
