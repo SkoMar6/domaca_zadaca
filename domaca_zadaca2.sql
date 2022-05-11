@@ -53,7 +53,11 @@ values ('Zelena','qwertz');
 insert into vozac (serijski_broj)
 values ('xyz123');
 
+insert into voznja (udaljenost, broj_putnika)
+values (17.2, 4);
+
 insert into putnik (dob)
+values (30);
 
 
 
