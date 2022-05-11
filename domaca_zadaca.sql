@@ -42,3 +42,11 @@ create table segrt (
 
 alter table popravak add foreign key (segrt) references segrt(sifra);
 alter table obuca add foreign key (korisnik) references korisnik(sifra);
+
+# unos podataka
+insert into obuca (oznaka_obuce)
+values ('M7652C');
+
+insert into 
+
+
