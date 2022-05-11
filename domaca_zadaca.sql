@@ -24,9 +24,9 @@ create table korisnik(
 create table popravak(
     sifra int not null primary key auto_increment,
     oznaka_obuce varchar(20) not null,
-    cijena varchar(50),
-    vrijeme varchar(50),
-    rad_segrta varchar(50),
+    cijena decimal(10,2),
+    vrijeme datetime,
+    rad_segrta boolean,
     segrt int
 );
 
@@ -34,7 +34,7 @@ create table segrt (
     sifra int not null primary key auto_increment,
     ime_prezime varchar(50),
     popravak varchar(50),
-    broj_popravaka_dnevno varchar(50),
+    broj_popravaka_dnevno int,
     oznaka_obuce varchar(20) not null
 );
 
