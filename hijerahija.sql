@@ -1,4 +1,4 @@
-# mysql -uroot --default_character_set=utf8 <C:\Users\Marko\Documents\GitHub\zadace\domaca_zadaca\hijerahija.sql
+# mysql -uroot --default_character_set=utf8 <C:\Users\Marko\Documents\GitHub\domaca_zadaca\hijerahija.sql
 # sifra int not null primary key auto_increment,
 
 drop database if exists hijerahija;
