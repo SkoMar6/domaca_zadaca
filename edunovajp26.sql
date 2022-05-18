@@ -141,3 +141,59 @@ insert into clan(grupa,polaznik) values
 (1,4),(1,5),(1,6),
 (1,7),(1,8),(1,9),
 (1,10),(1,11),(1,12);
+
+update smjer set upisnina=600 where sifra=1;
+
+update smjer set 
+cijena=5000,
+trajanje=100
+where sifra=2;
+
+update grupa set predavac=1 where sifra=1;
+
+delete from smjer where sifra=3;
+
+
+# Unesite sebe kao predavača
+# 3
+
+insert into  predavac(sifra, osoba, iban)
+values (null, 11 ,null);
+
+# Unijeti smjer Tehničar za mrežu 
+# 4
+
+insert into smjer (sifra,naziv,trajanje,cijena,upisnina,certificiran)
+values (null, 'Tehničar za mrežu', 150, 7500, 600, true);
+
+
+# Sebi kao predavaču promjeniti iban
+update predavac set
+iban='12345678910'
+where sifra =3;
+
+# Unijeti svoju užu rodbinu za polaznike
+
+insert into osoba (sifra,ime,prezime,oib,email) 
+values (null, 'Kristina', 'Skorup', null, 'ks@gmail.com'),
+       (null, 'Ivan', 'Skorup', null, 'is@gmail.com'),
+       (null, 'Zoran', 'Skorup', null, 'zs@gmail.com'),
+       (null, 'Zdenka', 'Petrak', null, 'zp@gmail.com');
+    
+insert into polaznik (sifra,osoba,brojugovora)
+values (null,15,null),(null,16,null),(null,17,null),(null,18,null);
+
+# pola rodbine upisati na JP26 a drugu
+# polovicu na PP25
+insert into clan (sifra,grupa,polaznik)
+values (null,1,13),(null,1,14),(null,2,15),(null,2,16);
+
+# povećati cijenu za 10%
+update smjer set cijena=cijena * 1.10;
+
+# smanjiti cijenu za 15%
+ 
+update smjer set cijena=cijena *0.85;
+
+
+
