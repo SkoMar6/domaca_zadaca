@@ -5,7 +5,7 @@ use kolokvij;
 
 create table sestra (
     sifra int not null primary key auto_increment,
-    haljina boolean not null,
+    haljina varchar(31) not null,
     maraka decimal(16,6) not null,
     hlace varchar(46),
     narukvica int not null
@@ -84,3 +84,33 @@ alter table muskarac add foreign key (zena) references zena (sifra);
 alter table mladic add foreign key (muskarac) references muskarac (sifra);
 alter table sestra_svekar add foreign key (sestra) references sestra (sifra);
 alter table sestra_svekar add foreign key (svekar) references svekar (sifra);
+
+
+insert into sestra (sifra, haljina, hlace, narukvica)
+values (null, 'crvena', 'crne', 1);
+
+insert into sestra (sifra, haljina, hlace, narukvica)
+values (null, 'zelena', 'crvene', 2);
+
+insert into sestra (sifra, haljina, hlace, narukvica)
+values (null, 'plava', 'plave', 3);
+
+insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
+values (null, 'plava', '12345678019', 'zelena',1);
+
+insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
+values (null, 'Žuta', '12345678000', 'zelena',2);
+
+
+insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
+values (null, 'crna', '12345678111', 'zelena',3);
+
+
+insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
+values (null, 'plava', 'crne', 'aviator', 1999.12345, 1);
+
+insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
+values (null, 'zelena', 'smeđe', 'sportske', 2999.12345, 2);
+
+insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
+values (null, 'smeđa', 'bijele', 'dioptrijske', 3999.12345, 3);
