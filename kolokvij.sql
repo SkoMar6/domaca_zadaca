@@ -87,30 +87,63 @@ alter table sestra_svekar add foreign key (svekar) references svekar (sifra);
 
 
 insert into sestra (sifra, haljina, hlace, narukvica)
-values (null, 'crvena', 'crne', 1);
-
-insert into sestra (sifra, haljina, hlace, narukvica)
-values (null, 'zelena', 'crvene', 2);
-
-insert into sestra (sifra, haljina, hlace, narukvica)
-values (null, 'plava', 'plave', 3);
+values (null, 'crvena', 'crne', 1),
+       (null, 'zelena', 'crvene', 2),
+       (null, 'plava', 'plave', 3);
 
 insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
-values (null, 'plava', '12345678019', 'zelena',1);
-
-insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
-values (null, 'Žuta', '12345678000', 'zelena',2);
-
-
-insert into zena (sifra, kratkamajica, jmbag, bojaociju, sestra)
-values (null, 'crna', '12345678111', 'zelena',3);
+values (null, 'plava', '12345678019', 'zelena',1),
+       (null, 'Žuta', '12345678000', 'zelena',2),
+       (null, 'crna', '12345678111', 'zelena',3);
 
 
 insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
-values (null, 'plava', 'crne', 'aviator', 1999.12345, 1);
+values (null, 'plava', 'crne', 'aviator', 1999.12345, 1),
+       (null, 'zelena', 'smeđe', 'sportske', 2999.12345, 2),
+       (null, 'smeđa', 'bijele', 'dioptrijske', 3999.12345, 3);
 
-insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
-values (null, 'zelena', 'smeđe', 'sportske', 2999.12345, 2);
+insert into svekar(sifra,bojaociju) values
+(null,'zelena'),
+(null, 'plava'),
+(null,'smeđa');
 
-insert into muskarac (sifra, bojaociju, hlace, modelnaocala, maraka, zena)
-values (null, 'smeđa', 'bijele', 'dioptrijske', 3999.12345, 3);
+
+insert into sestra_svekar(sifra,sestra,svekar) values
+(null,1,1),
+(null,1,3),
+(null,1,2);
+
+insert into cura(sifra,novcica,gustoca,ogrlica) values
+(null,11.2,1.4,1),
+(null,1.4,5.7,1),
+(null,1.2,13.4,1),
+(null,8.2,10.4,1),
+(null,18.2,14,1);
+
+update cura set gustoca=15.77;
+
+insert into mladic(sifra,suknja,kuna,ekstroventno,dukserica) values
+(null,'dugačka',18.9,null,'plava'),
+(null,'mini',20.1,null,'crvena'),
+(null,'kratka',5.9,null,'zuta'),
+(null,'poderana',89.1,null,'ljubicasta'),
+(null,'kratka',7.6,null,'zelena');
+
+delete from mladic where kuna>15.78;
+
+#select kratkamajica from zena where hlace like '%a%n%a%';
+
+select a.dukserica,f.asocijalno,e.hlace 
+from svekar a
+inner join sestra_svekar b on b.svekar = a.sifra 
+inner join sestra c on c.sifra = b.sestra 
+inner join zena d on d.sestra = c.sifra 
+inner join muskarac e on e.zena =d.sifra 
+inner join mladic f on f.muskarac = e.sifra 
+where d.hlace like 'a%' and c.haljina like '%ba%'
+order by e.hlace desc;
+
+select a.haljina, a.maraka
+from sestra a
+left join sestra_svekar b on b.sestra=a.sifra
+where b.sifra is null;
